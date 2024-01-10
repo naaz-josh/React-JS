@@ -37,19 +37,58 @@
 //]
 //}
 
-function groupBy(users,gender){
-    
-    return users.reduce((result,item)=>{
-        debugger
-        //Putting new entry
-        if(!result[gender]) {
-            result[gender] = [];
-        }
-        if(item.gender === gender) {
-            result[gender].push(item);
-        }
-        return result
-        },{})
 
+// Previous Code 
+// function groupBy(users,gender){
+    
+//     return users.reduce((result,item)=>{
+//         debugger
+//         //Putting new entry
+//         if(!result[gender]) {
+//             result[gender] = [];
+//         }
+//         if(item.gender === gender) {
+//             result[gender].push(item);
+//         }
+//         return result
+//         },{})
+
+// }
+// console.log(groupBy(users,"Male"))
+
+// Recent Code 
+
+function groubByGender(users,gender){
+  return users.reduce((Result,currentItem)=>{
+       let KeyValue=currentItem[gender]
+       if(!Result[KeyValue]){
+        Result[KeyValue]=[]
+       }
+       Result[KeyValue].push(currentItem)
+      return Result
+  },{})
 }
-console.log(groupBy(users,"Male"))
+
+console.log(groubByGender(users,"gender"))
+
+
+// By using for loop
+
+function groupByGen(users,gender){
+let obj={}
+ for(let i=0;i<users.length;i++){
+  const currentItem=users[i]
+  const genderValue= currentItem[gender]
+   if(!obj[genderValue]){
+     obj[genderValue]=[]
+   }
+
+   obj[genderValue].push(currentItem)
+   
+ }
+    return obj
+}
+
+const result1=groupByGen(users,"gender")
+console.log(result1)
+
